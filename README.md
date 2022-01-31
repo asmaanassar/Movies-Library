@@ -4,7 +4,9 @@
 **Author Name**: ASMA NASSAR
 
 ### WRRC
-[WRRC](Movie Data/image/IMG_20220131_003748_029.jpg)
+ ![WRRC](./image/IMG_20220131_003748_029.jpg)
+
+ ![API](./image/٢٠٢٢٠٢٠١_٠١٢٤١٤.jpg)
 
 ## Overview
 
@@ -33,3 +35,13 @@ End users use URLs by typing them directly into the address bar of a browser or 
 - when i type localhost:3000 go to the home page
 - when i type localhost:3000/favorit go to the next page call welcom
 - when i type any thing error go to the page like 404 error 
+
+### Asyncronuns
+this operation can be triggered only with tow things
+- web API/browser
+- Promisses
+* promisses means resolve (.then)and reject (.catch)
+### API 
+* it is Application user interface
+* it will take a "req" from client and take it as areq to server and take the "res" from server and go back to the client.
+* API can read and understand another language
