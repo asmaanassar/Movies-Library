@@ -4,7 +4,10 @@
 **Author Name**: ASMA NASSAR
 
 ### WRRC
-[WRRC](Movie Data/image/IMG_20220131_003748_029.jpg)
+![WRRC](image/IMG_20220131_003748_029.jpg).
+![API](image/٢٠٢٢٠٢٠١_٠١٢٤١٤.jpg).
+![DBM](image/٢٠٢٢٠٢٠١_٢٢٤٧٠٦.jpg).
+
 
 ## Overview
 
@@ -33,3 +36,32 @@ End users use URLs by typing them directly into the address bar of a browser or 
 - when i type localhost:3000 go to the home page
 - when i type localhost:3000/favorit go to the next page call welcom
 - when i type any thing error go to the page like 404 error 
+
+
+### Asyncronuns
+this operation can be triggered only with tow things
+
+* web API/browser
+* Promisses
+## promisses means resolve (.then)and reject (.catch)
+### API
+* it is Application user interface
+* it will take a "req" from client and take it as areq to server and take the "res" from server and go back to the client.
+* API can read and understand another language
+
+### Data base Managment system
+* Database Management System (DBMS) is a software for storing and retrieving users’ data while considering appropriate security measures. It consists of a group of programs which manipulate the database. The DBMS accepts the request for data from an application and instructs the operating system to provide the specific data. In large systems, a DBMS helps users and other third-party software to store and retrieve data.
+
+### Here, is the list of some popular DBMS system:
+
+* MySQL
+* Microsoft Access
+* Oracle
+* PostgreSQL
+* dBASE
+* FoxPro
+* SQLite
+* IBM DB2
+* LibreOffice Base
+* MariaDB
+* Microsoft SQL Server etc.
