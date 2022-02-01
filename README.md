@@ -4,6 +4,7 @@
 **Author Name**: ASMA NASSAR
 
 ### WRRC
+
 ![WRRC](image/IMG_20220131_003748_029.jpg).
 ![API](image/٢٠٢٢٠٢٠١_٠١٢٤١٤.jpg).
 ![DBM](image/٢٠٢٢٠٢٠١_٢٢٤٧٠٦.jpg).
@@ -38,6 +39,7 @@ End users use URLs by typing them directly into the address bar of a browser or 
 - when i type any thing error go to the page like 404 error 
 
 
+
 ### Asyncronuns
 this operation can be triggered only with tow things
 
@@ -65,3 +67,14 @@ this operation can be triggered only with tow things
 * LibreOffice Base
 * MariaDB
 * Microsoft SQL Server etc.
+=======
+### Asyncronuns
+this operation can be triggered only with tow things
+- web API/browser
+- Promisses
+* promisses means resolve (.then)and reject (.catch)
+### API 
+* it is Application user interface
+* it will take a "req" from client and take it as areq to server and take the "res" from server and go back to the client.
+* API can read and understand another language
+
