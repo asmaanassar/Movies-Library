@@ -9,8 +9,10 @@ const cors = require('cors');
 const axios = require('axios');
 const pg = require('pg');
 
+
 const filmdata = require('./Movie Data/data.json');
 const client = new pg.Client(process.env.DATABASE_URL)
+
 
 
 const PORT = process.env.PORT;
@@ -62,10 +64,12 @@ function handelfavorit(req, res) {
     res.status(200).json(film);
 }
 
+
 //let userSearch = "Spider-Man"
 
 
 let url = `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.APIKEY}&language=en-US`
+
 
 
 function trendingMovies(req, res) {
@@ -78,9 +82,8 @@ function trendingMovies(req, res) {
             res.status(200).json(trending);
         }).catch((error) => {
             errorHandler(error, req, res)
-        })
+      })
 }
-
 
 function SearchMovies(req, res) {
 
@@ -103,24 +106,13 @@ function SearchMovies(req, res) {
 function addFavFilmsHandler(req, res) {
     const moviefav = req.body;
     //   console.log(recipe)
-    let sql = `INSERT INTO favfilms(title,poster_path,overview,release_date) VALUES ($1,$2,$3,$4) RETURNING *;`
+    let sql = `INSERT INTO favfilms(title,poster_path,overview,release_date) VALUES ($1,$2,$3,$4) RETURNING *;`;
     let values = [moviefav.title, moviefav.poster_path, moviefav.overview, moviefav.release_date];
     client.query(sql, values).then(data => {
         res.status(200).json(data.rows);
     }).catch(error => {
         errorHandler(error, req, res)
     });
-}
-function handlehomemovies(req, res) {
-    return res.status(200).send("welcom to home movies page :)");
-}
-
-
-function handelfavorit(req, res) {
-    let film = new Moviefav(filmdata.title, filmdata.poster_path, filmdata.overview);
-    res.status(200).json(film);
-
-}
 
 
 function myFavfilmsHandler(req, res) {
@@ -131,16 +123,6 @@ function myFavfilmsHandler(req, res) {
         errorHandler(error, req, res)
     });
 }
-
-
-
-
-
-// server.listen(3000, ()=>{
-//     console.log("success listen");
-
-// server.listen(PORT, () => {
-//     console.log(`listin to port ${PORT}`)
 
 
 function OneFavMoviesHandler(req, res) {
@@ -157,13 +139,13 @@ function OneFavMoviesHandler(req, res) {
 
 function UpdateMovieHandler(req, res) {
     const id = req.params.id;
-    // console.log(req.params.name);
+   
     const movie = req.body;
     const sql = `UPDATE favfilms SET title =$1, poster_path = $2, overview = $3 ,release_date=$4 WHERE id=$5 RETURNING *;`;
     let values = [movie.title, movie.poster_path, movie.overview, movie.release_date, id];
     client.query(sql, values).then(data => {
         res.status(200).json(data.rows);
-        // res.status(204)
+        
     }).catch(error => {
         errorHandler(error, req, res)
     });
@@ -190,9 +172,10 @@ function errorHandler(error, req, res) {
     }
     res.status(500).send(err);
 }
-// fourth is connecting the client 
+
+
 client.connect().then(() => {
     server.listen(PORT, () => {
         console.log(`listining to port ${PORT}`)
     })
-})   
+});
