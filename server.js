@@ -113,6 +113,8 @@ function addFavFilmsHandler(req, res) {
     }).catch(error => {
         errorHandler(error, req, res)
     });
+}
+
 
 
 function myFavfilmsHandler(req, res) {
