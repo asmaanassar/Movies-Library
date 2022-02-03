@@ -7,38 +7,17 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
-
 const pg = require('pg');
 
-const client = new pg.Client(process.env.DATABASE_URL);
 const filmdata = require('./Movie Data/data.json');
-
-
-
-const pg = require('pg');           
-const filmdata = require('./Movie Data/data.json');
-
-const client = new pg.Client(process.env.DATABASE_URL);
-
-
-const filmdata = require('./Movie Data/data.json');
-
-
-const PORT = process.env.PORT;
+const client = new pg.Client(process.env.DATABASE_URL)
 
 
 const PORT = process.env.PORT;
 const server = express();
-
-server.use(cors());
-
-server.use(express.json());
-
-
-
-
 server.use(cors());
 server.use(express.json());
+
 
 
 server.get('/', handlehomemovies)
@@ -48,17 +27,6 @@ server.get('/Search', SearchMovies);
 
 server.post('/addFavfilms', addFavFilmsHandler);
 server.get('/myFavfilms', myFavfilmsHandler);
-
-
-
-server.post('/addFavfilms',addFavFilmsHandler);
-server.get('/myFavfilms',myFavfilmsHandler);
-
-
-
-
-server.use('*', NotfoundHandler);
-server.use(errorHandler)
 
 
 server.get('/oneFavMovie/:id', OneFavMoviesHandler);
@@ -75,10 +43,7 @@ function Moviefav(title, poster_path, overview) {
     this.overview = overview;
 }
 
-
 function Trendenig(id, title, release_date, poster_path, overview) {
-
-function Trendenig(id, title, release_date,poster_path,overview){
 
     this.id = id;
     this.title = title;
@@ -97,11 +62,7 @@ function handelfavorit(req, res) {
     res.status(200).json(film);
 }
 
-//let userSearch = "Spider-Man";
-
-let userSearch = "Spider-Man";
-
-let url=`https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.APIKEY}&language=en-US`
+//let userSearch = "Spider-Man"
 
 
 let url = `https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.APIKEY}&language=en-US`
@@ -126,22 +87,8 @@ function SearchMovies(req, res) {
     let userSearch = req.query.userSearch;
 
     let url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.APIKEY}&language=en-US&query=${userSearch}&page=2`;
-
     axios.get(url)
         .then(result => {
-
-function SearchMovies(req,res){
-
-    let userSearch = req.query.userSearch;
-   
-    let url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.APIKEY}&language=en-US&query=${userSearch}&page=2`;
-
-   
-        let url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.APIKEY}&language=en-US&query=${userSearch}&page=2`;
-
-    
-        axios.get(url)
-        .then(result=>{
 
             // console.log(result.data.recipes);
             let trendee = result.data.results.map(trende => {
@@ -153,8 +100,6 @@ function SearchMovies(req,res){
         })
 }
 
-
-
 function addFavFilmsHandler(req, res) {
     const moviefav = req.body;
     //   console.log(recipe)
@@ -165,47 +110,15 @@ function addFavFilmsHandler(req, res) {
     }).catch(error => {
         errorHandler(error, req, res)
     });
-
-
-
-function addFavFilmsHandler(req,res){
-    const moviefav = req.body;
-  //   console.log(recipe)
-    let sql = `INSERT INTO favfilms(title,poster_path,overview,release_date) VALUES ($1,$2,$3,$4) RETURNING *;`
-    let values=[moviefav.title,moviefav.poster_path,moviefav.overview,moviefav.release_date];
-    client.query(sql,values).then(data =>{
-        res.status(200).json(data.rows);
-    }).catch(error=>{
-        errorHandler(error,req,res)
-    });
-  }
-  
-  
-  function myFavfilmsHandler(req,res){
-      let sql = `SELECT * FROM favfilms;`;
-      client.query(sql).then(data=>{
-         res.status(200).json(data.rows);
-      }).catch(error=>{
-          errorHandler(error,req,res)
-      });
-  }
-
-
-
-
-function handelfavorit(req, res){
+}
+function handlehomemovies(req, res) {
     return res.status(200).send("welcom to home movies page :)");
-    }
+}
 
 
-function handelfavorit(req, res){
-    return res.status(200).send("welcom to home movies page :)");
-    }
-
-
-function homemovies(req,res){
-    let film =  new Moviefav(filmdata.title, filmdata.poster_path, filmdata.overview);
-     res.status(200).json(film);
+function handelfavorit(req, res) {
+    let film = new Moviefav(filmdata.title, filmdata.poster_path, filmdata.overview);
+    res.status(200).json(film);
 
 }
 
@@ -222,16 +135,12 @@ function myFavfilmsHandler(req, res) {
 
 
 
-client.connect().then(()=>{
-    server.listen(PORT,()=>{
-        console.log(`listining to port ${PORT}`)
-    })
-});
+
 // server.listen(3000, ()=>{
 //     console.log("success listen");
 
-server.listen(PORT,()=>{
-    console.log(`listin to port ${PORT}`)
+// server.listen(PORT, () => {
+//     console.log(`listin to port ${PORT}`)
 
 
 function OneFavMoviesHandler(req, res) {
